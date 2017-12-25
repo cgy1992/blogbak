@@ -1,5 +1,7 @@
 title: ObjectBox-Java (android)使用手册
 intro: ObjectBox使用手册翻译
+categories:  
+- android学习记录
 tags:
 - android
 - ObjectBox

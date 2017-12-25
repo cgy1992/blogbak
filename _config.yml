@@ -35,11 +35,11 @@ titlecase: false # Transform title into titlecase
 external_link: true # Open external links in new tab
 filename_case: 1
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 relative_link: false
 highlight:
-  enable: false
-  auto_detect: true
+  enable: true
+  auto_detect: false
   line_number: true
   tab_replace: ''
 
@@ -48,6 +48,8 @@ default_category: uncategorized
 category_map:
 tag_map:
 
+social:
+  GitHub: https://github.com/YuTianTina || github
 # Archives
 ## 2: Enable pagination
 ## 1: Disable pagination

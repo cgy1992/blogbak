@@ -1,5 +1,7 @@
 title: 利用gradle多aar发布私有maven
 intro: 多aar发布
+categories :
+- android学习记录
 tags:
 - android
 - gradle

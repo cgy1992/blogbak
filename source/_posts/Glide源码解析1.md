@@ -34,7 +34,7 @@ private RequestManager supportFragmentGet(@NonNull Context context, @NonNull Fra
 ```
 通过`getSupportRequestManagerFragment(final FragmentManager fm, Fragment parentHint)`方法调用, 在`Glide.with(context)`中传入的组件中,
 新增一个子Fragment, 这个Fragment类根据传入的是`support.fragment`或者是`fragment`来决定是`RequestManagerFragment`还是`SupportRequestManagerFragment`,然后通过`current.SupportRequestManagerFragment()` 将Glide的生命周期与这个子fragment的声明周期绑定, 实现了组件与Glide加载同步的功能
-## 二. 图片的加载
+## 图片的加载
 我们通过暴露的into的API跳进去, 最终到了`RequestBuilder.into(@NonNull Y target, @Nullable RequestListener<TranscodeType> targetListener, @NonNull RequestOptions options)`, 详细代码如下:
 ``` java
 private <Y extends Target<TranscodeType>> Y into(
@@ -252,3 +252,4 @@ public <R> LoadStatus load(
 ## 总结
 到这里, 整体的流程大致是搞清楚了, 至于说是缓存的原理机制, 在之前`Engine.load()`的方法内, 删除缓存的方法进去可以看到一个`LruCache`的类文件, 从名字可以推断是Glide自己实现的`Lru算法`作为缓存的处理, 关于Lru的算法原理, 在本篇内就不再做赘述了, 而`ActiveCache`用到了`引用计数`算法.
 Glide用到了大量的抽象工厂类, 另外方法内经常是包括了十来个参数, 在阅读的经过上还是有点困难(对我而言).
+相应的代码注释可看[Github上我补充的注释](https://github.com/YuTianTina/glide)

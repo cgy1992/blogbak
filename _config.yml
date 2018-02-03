@@ -115,6 +115,14 @@ feed:
     type: atom
     path: atom.xml
     limit: 100
+
+# MathJax config
+math:
+engine: 'mathjax' # or 'katex'
+mathjax:
+src: custom_mathjax_source
+config:
+
 # jsonContent:
 #   meta: false
 #   pages: false

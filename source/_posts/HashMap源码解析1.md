@@ -4,6 +4,7 @@ categories:
 tags:
 - 源码解析
 ---
+
 ## 前言
 本篇主要了解下`HashMap`的源码, 以便了解其常用方法的实现原理.本篇以android SDK API26内的Java源码为准
 ## HashMap是什么
@@ -27,7 +28,7 @@ public HashMap(int initialCapacity, float loadFactor) {
         this.threshold = tableSizeFor(initialCapacity);
     }
 ```
-这里threshold的计算方法, 我们姑且看下, `MAXIMUM_CAPACITY`为`1<<30`, 位移运算后值为`$ 2^29`
+这里threshold的计算方法, 我们姑且看下, `MAXIMUM_CAPACITY`为`1<<30`, 位移运算后值为$2^{29}$
 ``` java
     static final int tableSizeFor(int cap) {
         int n = cap - 1;
@@ -39,7 +40,7 @@ public HashMap(int initialCapacity, float loadFactor) {
         return (n < 0) ? 1 : (n >= MAXIMUM_CAPACITY) ? MAXIMUM_CAPACITY : n + 1;
     }
 ```
-这段代码的意思就是会获取等于或大于`cap`最小的2的幂次,我们以默认值默认值$2^4为例尝试计算一下, 得到的结果是$2^5.
+这段代码的意思就是会获取等于或大于`cap`最小的2的幂次,我们以默认值默认值$2^4$为例尝试计算一下, 得到的结果是$2^5$.
 ## get(Object key)
 我们首先看下如果对`HashMap`进行查找.
 ``` java

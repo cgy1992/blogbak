@@ -103,7 +103,7 @@ exclude_generator:
 
 deploy:
   type: git
-  repo: https://github.com/YuTianTina/YuTianTina.github.io.git
+  repo: git@github.com:YuTianTina/YuTianTina.github.io.git
   branch: master
 
 sitemap:

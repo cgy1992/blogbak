@@ -196,4 +196,4 @@ public void trimToSize(int maxSize) {
     }
 ```
 ## 总结
-现在, 我们可以了解到, 真正辅助`LruCache`实现它的算法的`LinkedHashMap`, 它会以读取的顺序来做顺序排序, 最近读取的在队尾, 当我们调用`LruCache.put`的时候, 将插入元素放在`map`队尾, 然后通过调用`trimToSize`判断是否超出缓存大小, 如果超出, 则移除`map`的队尾对象.当我们调用`LruCache.get`的时候, 直接读取map对应`key`的`value`, 并由于`LinkedHashMap`的内部机制, 对读取顺序重排序, 将对应的元素更新到队尾
+现在, 我们可以了解到, 真正辅助`LruCache`实现它的算法的`LinkedHashMap`, 它会以读取的顺序来做顺序排序, 最近读取的在队尾, 当我们调用`LruCache.put`的时候, 将插入元素放在`map`队尾, 然后通过调用`trimToSize`判断是否超出缓存大小, 如果超出, 则移除`map`的队首对象.当我们调用`LruCache.get`的时候, 直接读取map对应`key`的`value`, 并由于`LinkedHashMap`的内部机制, 对读取顺序重排序, 将对应的元素更新到队尾

@@ -1,4 +1,5 @@
 title: 谈谈GC和引用
+date: 2018-01-12 00:00:00
 categories :
 - Java
 tags:

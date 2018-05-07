@@ -1,4 +1,5 @@
 title: Glide源码解析
+date: 2017-12-22 00:00:00
 categories:
 - android学习记录
 - 源码解析

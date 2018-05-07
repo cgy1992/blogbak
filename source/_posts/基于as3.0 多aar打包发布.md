@@ -1,4 +1,5 @@
 title: 利用gradle多aar发布私有maven
+date: 2017-12-19 00:00:00
 intro: 多aar发布
 categories :
 - android学习记录

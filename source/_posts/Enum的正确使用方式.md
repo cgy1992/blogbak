@@ -1,4 +1,5 @@
 title: Enum的正确使用方式
+date: 2017-12-26 00:00:00
 categories:
 - android学习记录
 tags:

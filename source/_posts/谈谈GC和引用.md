@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 <!-- more -->
-我们不妨先看下打印日志![打印日志](谈谈GC和引用/gc.png)
+我们不妨先看下打印日志![打印日志](./gc.png)
 当`user`为空的时候, `userWeakReference.get()`不为空, 直到GC以后, 才为空.
 ## 对象的初始化
 这个问题的道理其实很简单.首先我们来看下下面代码的含义

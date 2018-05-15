@@ -31,7 +31,7 @@ afterEvaluate{
 3. 执行task
 
 当然这一块流程, 我们可以从AS的Build上分析得出.
-![执行流程](./记录一次Gradle的踩坑/Gradle执行时序.png)
+![执行流程](./Gradle执行时序.png)
 然后我们再回头说到`afterEvaluate`, 它是在配置阶段后, 已经获取对应`project`的`task`后, 回调执行的.具体可以看[官方文档的说明](https://docs.gradle.org/current/javadoc/org/gradle/api/Project.html#afterEvaluate-groovy.lang.Closure-)(这里放的是最新版本的API文档, 要看对应版本的文档, 可以看本地的gradle文件夹内的javadoc文档)
 ### 问题和解决
 ok, 那么关于`afterEvaluate`我们已经了解了, 再往下看,`android.buildTypes.each`就是对`project`的配置的`buildType`进行遍历, 然后当`buildType`为`release`的时候, 获取对应`buildType`的`transformClassesWithDex`.
@@ -79,7 +79,7 @@ android.applicationVariants.all{
     }
 ```
 `all`与`each`不同, 他只会在`configuration`阶段后进行获取填充.
-## 其他
+### 其他
 至于为什么同事的PC上可以运行, 我的不行, 后来排查下来, 应该是在AS`3.1.2`版本(同事的AS是3.0.1)在执行获取配置这块, 校验更为严格的原因. 但是具体的我并没有查询相关的文档.
-## 总结
+### 总结
 其实本次问题并不难解决, 可能是前期因为同事可以运行, 本地环境却不能运行的状况给搞懵逼了. 但是后来还是顺利解决了.关于Gradle, 这次的踩坑经验是教了我去看官方API...虽然说Gradle的文档是真的好难定位

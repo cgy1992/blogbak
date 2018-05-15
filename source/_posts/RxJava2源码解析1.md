@@ -375,6 +375,6 @@ static final class FilterObserver<T> extends BasicFuseableObserver<T, T> {
 ```
 ## 总结
 订阅和数据的传输的原理就是如此. 我们用流程图来总结下上面的整个流程.
-![流程图](RxJava2源码解析/rxjava实现原理.jpg)
+![流程图](./rxjava实现原理.jpg)
 总的来说, 订阅的动作是层层递归上传到最开始的`Observable`, 然后从最开始的`Observable`将数据一层层往下传.
 当然, 从`装饰模式`来讲, 他这里的实际动作就是将`Observable`做了层层装饰来传递订阅, 对设计模式有兴趣的同学可以看看相关的书籍, 对于理解这段代码有点睛之用

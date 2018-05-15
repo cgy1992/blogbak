@@ -187,7 +187,7 @@ public <R> LoadStatus load(
   }
 ```
 这里的流程图可以看下图:
-![Engine.load()流程图](Glide源码解析1/glide_load时序图.png)
+![Engine.load()流程图](./glide_load时序图.png)
 ## 资源图片的缓存
 当无法再当前存活的资源以及缓存内找到对应key的资源时, 会通过`engineJob`开始执行`decodeJob`, 所以我们可以直接看`decodeJob`的`run()`.
 ``` java
@@ -249,7 +249,7 @@ public <R> LoadStatus load(
   }
 ```
 我们看下DecodeJob的执行流程
-![decodeJob执行流程](Glide源码解析1/decodeJob流程图.png)
+![decodeJob执行流程](./decodeJob流程图.png)
 ## 总结
 到这里, 整体的流程大致是搞清楚了, 至于说是缓存的原理机制, 在之前`Engine.load()`的方法内, 删除缓存的方法进去可以看到一个`LruCache`的类文件, 从名字可以推断是Glide自己实现的`Lru算法`作为缓存的处理, 关于Lru的算法原理, 在本篇内就不再做赘述了, 而`ActiveCache`用到了`引用计数`算法.
 Glide用到了大量的抽象工厂类, 另外方法内经常是包括了十来个参数, 在阅读的经过上还是有点困难(对我而言).

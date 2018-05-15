@@ -152,7 +152,7 @@ final V putVal(int hash, K key, V value, boolean onlyIfAbsent,
 ```
 `put`具体的流程图可以看下图
 
-![put流程图](HashMap源码解析/put.jpg)
+![put流程图](./put.jpg)
 ## 扩容resize
 该方法主要作用就是针对map进行容量初始化或者扩容双倍容量, 另外, 扩容之后, 需要重新计算键值对的位置, 并移动到目标位置上.
 ``` java

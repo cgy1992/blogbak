@@ -110,7 +110,7 @@ public final class Singleton {
 }
 ```
 很好, 一个典型的饿汉式. 饿汉式的缺点我们简明讲下, 由于是类加载的第一时间就会新建实例, 所以当我们整个工程没有用到的时候, 就会导致内存空间的浪费.另外, 它无法自定义构造函数.
-![object](./kotlin.png)
+![object](./Kotlin.png)
 如果我们不适用`object`呢, 应该如何实现单例模式?
 
 我们来尝试用kotlin写一个`DSL`单例模式, 先看java的实现方法

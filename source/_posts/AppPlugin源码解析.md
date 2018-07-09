@@ -6,7 +6,7 @@ tags:
 - Android
 - 源码解析
 ---
-之前为了优化内部的Route, 去看了下`TransformAPI`, 为了了解`TransformAPI`的执行顺序, 就看了下`AppPlugin`的源码.
+之前为了优化内部的Route, 去看了下`TransformAPI`, 然后就顺便看了下`AppPlugin`的源码.
 本篇源码基于android gradle 3.0.1的版本.
 <!--more-->
 ### 总入口

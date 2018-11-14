@@ -9,7 +9,9 @@ tags:
 ## 前言
 本篇主要看下`CallServerInterceptor`, 关于他在整个请求中起到的作用, okHttp已经告诉我们, 可以看出它作为责任链中的最后一个环节, 承担了对服务端进行请求的工作.
 > This is the last interceptor in the chain. It makes a network call to the server.
+
 <!-- more -->
+
 ## 正文
 `okHttp`对于对服务钱的请求与相应, 底层都是通过`okio`对`socket`进行操作.
 老样子, 我们直接上代码

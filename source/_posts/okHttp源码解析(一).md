@@ -192,7 +192,9 @@ public Response proceed(Request request, StreamAllocation streamAllocation, Http
     return response;
   }
 ```
-这里可以把拦截器理解成工厂模式, 递归执行拦截器抽象的`intercept`方法, 然后将返回的`response`再传到下一个拦截器内做处理.再返回看前面的`getResponseWithInterceptorChain`方法, 可以看出真正请求执行的就在这一块, 根据责任链的设计思想, 将操作分开进行处理.
+这里可以把拦截器理解成工厂模式, 包装`Request`, 递归执行拦截器抽象的`intercept`方法, 然后将返回的`Response`再传回上一个拦截器内做处理.再返回看前面的`getResponseWithInterceptorChain`方法, 可以看出真正请求执行的就在这一块, 根据责任链的设计思想, 将操作分开进行处理.
+具体流程可看下图
+![img](./chain.jpg)
 ## 异步请求
 现在我们再回头看下异步请求时, 与同步请求有什么区别.
 ``` java
@@ -268,3 +270,5 @@ private void promoteCalls() {
 这里唯一的区别是, 异步请求调到`Dispatcher.finished`的时候, 会调到`promoteCalls`方法, 他用来判断调度当前异步请求数是否超过最大请求, 如果没有, 则会从异步请求等待队列中获取出来再进行请求执行.由此, `Dispatch`才做到了内部针对于异步请求的线程管理, 实现了对应策略下同时请求的最大化.
 ## 总结
 本篇主要了解同步请求和异步请求的主干流程, 可以看出异步请求和同步请求的区别, 就在于, 异步请求真正执行是通过`Dispatcher`进行管理与执行, 虽然同步请求也用到了`Dispatcher`, 但它主要是用来做同步请求队列的管理.两类请求真正的请求网络的处理, 都是通过调用`getResponseWithInterceptorChain`方法进行处理.
+整体流程可以参照[拆轮子系列：拆 OkHttp](https://blog.piasy.com/2016/07/11/Understand-OkHttp/#section-2)里的下图
+![img](./okhttp_full_process.png)

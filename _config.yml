@@ -123,6 +123,12 @@ mathjax:
 src: custom_mathjax_source
 config:
 
+# search:
+# path: search.xml
+# field: post
+# format: html
+# limit: 10000
+
 # jsonContent:
 #   meta: false
 #   pages: false

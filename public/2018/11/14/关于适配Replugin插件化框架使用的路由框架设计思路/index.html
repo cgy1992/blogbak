@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="android," />
+  <meta name="keywords" content="android,路由," />
 
 
 
@@ -94,20 +94,20 @@
 
 
 
-<meta name="description" content="前言公司有内部开发的路由框架, 为了可适配Replugin插件化框架, 当前的路由框架肯定是不能使用的, 由于闭源情况, 这里主要讲下改造的思路 原路由设计思路以及主要问题以ARouter为例, 他的设计仅服务于组件化架构项目, 各模块通过APT收集路由信息,APP壳(应用壳)通过反射或者通过TranslateAPI + ASM技术进行动态注册路由映射表, (具体可参考之前的ARouter源码解析">
-<meta name="keywords" content="android">
+<meta name="description" content="前言公司有内部开发的路由框架, 为了可适配Replugin插件化框架, 当前的路由框架肯定是不能使用的, 由于项目闭源, 这里主要讲下改造的思路">
+<meta name="keywords" content="android,路由">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于适配Replugin插件化框架的使用">
 <meta property="og:url" content="//litten.me/2018/11/14/关于适配Replugin插件化框架使用的路由框架设计思路/index.html">
 <meta property="og:site_name" content="天晴日无风">
-<meta property="og:description" content="前言公司有内部开发的路由框架, 为了可适配Replugin插件化框架, 当前的路由框架肯定是不能使用的, 由于闭源情况, 这里主要讲下改造的思路 原路由设计思路以及主要问题以ARouter为例, 他的设计仅服务于组件化架构项目, 各模块通过APT收集路由信息,APP壳(应用壳)通过反射或者通过TranslateAPI + ASM技术进行动态注册路由映射表, (具体可参考之前的ARouter源码解析">
+<meta property="og:description" content="前言公司有内部开发的路由框架, 为了可适配Replugin插件化框架, 当前的路由框架肯定是不能使用的, 由于项目闭源, 这里主要讲下改造的思路">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="//litten.me/2018/11/14/关于适配Replugin插件化框架使用的路由框架设计思路/路由结合Replugin跳转流程.jpg">
-<meta property="og:updated_time" content="2018-11-14T08:47:40.811Z">
+<meta property="og:image" content="//litten.me/2018/11/14/关于适配Replugin插件化框架使用的路由框架设计思路/replugin.jpg">
+<meta property="og:updated_time" content="2018-11-14T08:59:26.106Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于适配Replugin插件化框架的使用">
-<meta name="twitter:description" content="前言公司有内部开发的路由框架, 为了可适配Replugin插件化框架, 当前的路由框架肯定是不能使用的, 由于闭源情况, 这里主要讲下改造的思路 原路由设计思路以及主要问题以ARouter为例, 他的设计仅服务于组件化架构项目, 各模块通过APT收集路由信息,APP壳(应用壳)通过反射或者通过TranslateAPI + ASM技术进行动态注册路由映射表, (具体可参考之前的ARouter源码解析">
-<meta name="twitter:image" content="//litten.me/2018/11/14/关于适配Replugin插件化框架使用的路由框架设计思路/路由结合Replugin跳转流程.jpg">
+<meta name="twitter:description" content="前言公司有内部开发的路由框架, 为了可适配Replugin插件化框架, 当前的路由框架肯定是不能使用的, 由于项目闭源, 这里主要讲下改造的思路">
+<meta name="twitter:image" content="//litten.me/2018/11/14/关于适配Replugin插件化框架使用的路由框架设计思路/replugin.jpg">
 
 
 
@@ -346,8 +346,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/android学习记录/" itemprop="url" rel="index">
-                    <span itemprop="name">android学习记录</span>
+                  <a href="/categories/日常开发踩坑记录/" itemprop="url" rel="index">
+                    <span itemprop="name">日常开发踩坑记录</span>
                   </a>
                 </span>
 
@@ -383,7 +383,7 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>公司有内部开发的路由框架, 为了可适配Replugin插件化框架, 当前的路由框架肯定是不能使用的, 由于闭源情况, 这里主要讲下改造的思路</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>公司有内部开发的路由框架, 为了可适配Replugin插件化框架, 当前的路由框架肯定是不能使用的, 由于项目闭源, 这里主要讲下改造的思路<br><a id="more"></a></p>
 <h2 id="原路由设计思路以及主要问题"><a href="#原路由设计思路以及主要问题" class="headerlink" title="原路由设计思路以及主要问题"></a>原路由设计思路以及主要问题</h2><p>以<code>ARouter</code>为例, 他的设计仅服务于组件化架构项目, 各模块通过APT收集路由信息,APP壳(应用壳)通过反射或者通过TranslateAPI + ASM技术进行动态注册路由映射表, (具体可参考之前的<a href="https://yutiantina.github.io/2018/05/18/ARouter%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/" target="_blank" rel="noopener">ARouter源码解析</a>)</p>
 <p>我们内部的路由大体的设计原理也差不多如上. 显而易见, 当要接入<code>Replugin</code>的时候, 会出现以下几个问题:</p>
 <ol>
@@ -395,7 +395,7 @@
 <ol>
 <li>由于<code>Replugin</code>宿主和插件使用不同的ClassLoader, 变相导致插件和宿主的代码级隔离, 所以常用的通过反射or使用ASM获取路由映射表动态注册的方式就无法解决.</li>
 </ol>
-<h2 id="一版改造设计思路"><a href="#一版改造设计思路" class="headerlink" title="一版改造设计思路"></a>一版改造设计思路</h2><p>原来参考网上的资料, 是考量各插件维护自身的路由映射表, 当宿主动态加载插件的时候, 主动启动插件, 路由框架提供远程服务通过AIDL通信实现各插件的路由可以共享, 而关于组件的跳转, 将其抽象有外部业务项目初始化时进行实现. 具体思路流程可看下图<br><img src="./路由结合Replugin跳转流程.jpg" alt="img"><br>但是这样又有两个问题出现了:</p>
+<h2 id="一版改造设计思路"><a href="#一版改造设计思路" class="headerlink" title="一版改造设计思路"></a>一版改造设计思路</h2><p>原来参考网上的资料, 是考量各插件维护自身的路由映射表, 当宿主动态加载插件的时候, 主动启动插件, 路由框架提供远程服务通过AIDL通信实现各插件的路由可以共享, 而关于组件的跳转, 将其抽象有外部业务项目初始化时进行实现. 具体思路流程可看下图<br><img src="./replugin.jpg" alt="一版设计思路"><br>但是这样又有两个问题出现了:</p>
 <ol>
 <li>通过AIDL传输路由, 存在一定的性能消耗</li>
 <li>另外很重要的一个问题是, 目前内部路由存在路由协议无法与对应页面所在插件匹配的情况下, 那么, 当宿主或者插件需要根据对应的路由跳转到对应的插件下组件的时候, 从路由信息上是无法获取需要启动哪个插件</li>
@@ -430,6 +430,8 @@
           
             <a href="/tags/android/" rel="tag"># android</a>
           
+            <a href="/tags/路由/" rel="tag"># 路由</a>
+          
         </div>
       
 
@@ -450,6 +452,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/03/LeakCanary源码解析/" rel="prev" title="LeakCanary简易解析">
+                LeakCanary简易解析 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -528,7 +534,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -550,7 +556,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -564,7 +570,7 @@
           
             
               <span class="links-of-author-item">
-                <a href="https:github.com/YuTianTina" target="_blank" title="GitHub">
+                <a href="https://github.com/YuTianTina" target="_blank" title="GitHub">
                   
                     <i class="fa fa-fw fa-github"></i>
                   
@@ -766,47 +772,7 @@
         j.async = true;
         e.parentNode.insertBefore(j, e);
       })(document, 'script');
-    </script>
-  
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+    </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
 </script>
@@ -824,6 +790,26 @@
 </script>
 <!-- End: Injected MathJax -->
 <!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
   
 
 
